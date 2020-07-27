@@ -1,7 +1,13 @@
-# linux-setup
 
-    sudo apt-get update
-    sudo apt-get install -y vim mosh tmux htop git curl wget unzip zip gcc build-essential make
+# linux-setup
+##### create user
+	adduser username
+	usermod -aG sudo username
+	group username
+	su username
+
+	sudo apt-get update
+	sudo apt-get install -y vim mosh tmux htop git curl wget unzip zip gcc build-essential make
 
 ### Configure SSH:
 
@@ -21,7 +27,7 @@
     chsh -s $(which zsh)
 
 
-### Install python 3.8
+# Install python 3.8
 
     wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tgz ; \
     tar xvf Python-3.8.5 ; \
@@ -145,3 +151,63 @@ add code
 
 ##### Launch vim and run
 	:PluginInstall
+---
+# install and setup virtual environments, gunicorn, supervisor, nginx
+	python3.8 -m venv env
+	
+	. env/bin/activate
+### install gunicon
+	pip install gunicorn
+##### in my django project create gunicorn_config.py
+	vim gunicorn_config.py 
+		command = '/home/www/code/env/bin/gunicorn'
+		pythonpath = '/home/www/code/test1'
+		bind = '127.0.0.1:8001'
+		workers = 3
+		user = 'www'
+		limit_request_fields = 32000
+		limit_request_field_size = 0
+		raw_env = 'DJANGO_SETTINGS_MODULE=test1.settings'
+##### create directory bin and <.sh> file for run gunicorn
+	mkdir ~/code/bin
+	vim ~/code/bin/start_gunicorn.sh
+		#!/bin/bash
+		source /home/www/code/env/bin/activate
+		exec gunicorn -c "/home/www/code/test1/gunicorn_config.py" test1.wsgi
+	
+	chmod +x ~/code/bin/start_gunicorn.sh
+##### create start supervisor project
+	sudo vim /etc/supervisor/conf.d/www
+		[program:gunicorn]
+		command=/home/www/code/bin/start_gunicorn.sh
+		user=www
+		process_name=%(program_name)s
+		numproc=1
+		autostart=1
+		autorestart=1
+		redirect_stderr=true
+
+### nginx
+	sudo vim /etc/nginx/sites-available/default
+		server {
+			listen 80;
+			server_name 192.168.1.200;
+
+			location /media/ {
+			root /home/www/code/test1/; 
+			expires 30d;
+			 }
+
+			location /static/ {
+			    root /home/www/code/test1;
+			expires 30d;
+			}       
+
+			location / {
+				proxy_pass http://127.0.0.1:8001;
+				proxy_set_header X-Forwarded-Host $server_name;
+				proxy_set_header X-Real-IP $remote_addr;
+				add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+				add_header Access-Control-Allow-Origin *;
+			}
+		}
