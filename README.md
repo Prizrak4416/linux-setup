@@ -32,9 +32,8 @@
     wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tgz ; \
     tar xvf Python-3.8.5 ; \
     cd Python-3.8.5 ; \
-    mkdir ~/.python ; \
-    ./configure --enable-optimizations --prefix=/home/www/.python ; \
-    make -j8 ; \
+    ./configure --enable-optimizations
+    make -j 12 ; \
     sudo make altinstall
 
 ### Update pip:
