@@ -28,12 +28,12 @@
 
 ## maby openssh for python3.8
 
-wget http://www.openssl.org/source/openssl-3.0.0.tar.gz.tar.gz
-tar -xvzf openssl-3.0.0.tar.gz
-cd openssl-3.0.0/
-./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
-make
-sudo make install
+    wget http://www.openssl.org/source/openssl-3.0.0.tar.gz.tar.gz
+    tar -xvzf openssl-3.0.0.tar.gz
+    cd openssl-3.0.0/
+    ./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
+    make
+    sudo make install
 
 # Install python 3.8
 
