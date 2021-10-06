@@ -33,7 +33,7 @@
     tar xvf Python-3.8.5 ; \
     cd Python-3.8.5 ; \
     ./configure --enable-optimizations
-    make -j 12 ; \
+    make -j 12 ; \ core in cpu
     sudo make altinstall
 
 ### Update pip:
