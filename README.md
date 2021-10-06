@@ -29,6 +29,8 @@
 
 # Install python 3.8
 
+    sudo apt install libffi-dev libsqlite3-dev zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev build-essential libreadline-dev wget libbz2-dev
+
     wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tgz ; \
     tar xvf Python-3.8.5 ; \
     cd Python-3.8.5 ; \
