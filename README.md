@@ -26,6 +26,14 @@
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     chsh -s $(which zsh)
 
+## maby openssh for python3.8
+
+wget http://www.openssl.org/source/openssl-3.0.0.tar.gz.tar.gz
+tar -xvzf openssl-3.0.0.tar.gz
+cd openssl-3.0.0/
+./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
+make
+sudo make install
 
 # Install python 3.8
 
