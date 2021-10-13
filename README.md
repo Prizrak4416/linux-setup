@@ -48,7 +48,7 @@
    
 
 ### Update pip:
-
+    sudo apt install -y python3-venv
     sudo /home/www/.python/bin/python3.8 -m pip install -U pip
 
 ### Delite python.tgz and python directorн
