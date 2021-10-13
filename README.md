@@ -270,3 +270,5 @@
     
     /etc/php  in php.ini  rename -  short_open_tag=On
     
+    sudo service apache2 restart
+    
