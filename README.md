@@ -221,3 +221,15 @@ add code
 				add_header Access-Control-Allow-Origin *;
 			}
 		}
+
+# Install snap
+    https://snapcraft.io/
+    $ sudo rm /etc/apt/preferences.d/nosnap.pref
+    $ sudo apt update
+    $ sudo apt install snapd
+### PHPsthorm
+    sudo snap install phpstorm --classic
+### PyCharm-community
+    sudo snap install pycharm-community --classic
+### keepassxc
+    sudo snap install keepassxc
