@@ -70,7 +70,13 @@
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'tpope/vim-fugitive'
     Plugin 'git://git.wincent.com/command-t.git'
+    Plugin 'vim-syntastic/syntastic'
+    Plugin 'Yggdroot/indentLine'
     Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'StanAngeloff/php.vim'
+    Plugin 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
+    "Plugin 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
     call vundle#end()            " required
     filetype plugin indent on    " required
 
@@ -158,6 +164,24 @@ add code
 
 	set guifont=Monaco:h18
 	colorscheme OceanicNext
+	
+	"---------------------------syntacsis----------------------
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
+
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 0
+	"-----------------------------------------------------------
+
+	"----------https://github.com/Yggdroot/indentLine----------
+	let g:indentLine_leadingSpaceChar = '.'
+	let g:indentLine_leadingSpaceEnabled = 1
+	let g:indentLine_enabled = 1
+
+	"----------------------------------------------------------
 
 ##### Launch vim and run
 	:PluginInstall
@@ -233,3 +257,17 @@ add code
     sudo snap install pycharm-community --classic
 ### keepassxc
     sudo snap install keepassxc
+
+# For PHP server
+    sudo apt install apache2
+    sudo apt install mysql-server
+    sudo apt install php libapache2-mod-php php-mysql
+    
+    /etc/apache2/sites-available/000-default.conf
+    rename  -  DocumentRoot /var/www/html
+    
+    /etc/apache2/apache2.conf
+    rename -  <Directory /var/www/html/>
+    
+    /etc/php  in php.ini  rename -  short_open_tag=On
+    
