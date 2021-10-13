@@ -63,31 +63,30 @@
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 		
 #### vim ~/.vimrc	
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
+    set nocompatible
+    filetype off 
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'tpope/vim-fugitive'
     Plugin 'git://git.wincent.com/command-t.git'
-    Plugin 'vim-syntastic/syntastic'
-    Plugin 'Yggdroot/indentLine'
     Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-    Plugin 'jiangmiao/auto-pairs'
-    Plugin 'StanAngeloff/php.vim'
-    Plugin 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
-    "Plugin 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
-    call vundle#end()            " required
-    filetype plugin indent on    " required
+    call vundle#end()
+    filetype plugin indent on
 
 ##### Launch vim and run
 
 	:PluginInstall
 #### vim ~/.vimrc
-add code
-
-	Plugin 'flazz/vim-colorschemes'
-	Plugin 'tpope/vim-surround'
+    add code
+    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'StanAngeloff/php.vim'
+    Plugin 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
+    "Plugin 'sheerun/vim-polyglot' "https://github.com/sheerun/vim-polyglot
+    Plugin 'vim-syntastic/syntastic'
+    Plugin 'Yggdroot/indentLine'
+    Plugin 'flazz/vim-colorschemes'
+    Plugin 'tpope/vim-surround'
 	
 	" Настройки табов для Python, согласно рекоммендациям
 	set tabstop=4 
