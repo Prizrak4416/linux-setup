@@ -2,3 +2,5 @@ mysqldump --add-drop-table --single-transaction -uprizrak -hlocalhost -p sezby_m
 сделать дамп базы 
 --single-transaction  Параметр создает дамп в виде одной транзакции.
 --add-drop-table    Добавляет оператор DROP TABLE перед каждым оператором CREATE TABLE.
+UPDATE mysql.user SET Super_Priv='Y' WHERE user='johnDoe' AND host='%';
+FLUSH PRIVILEGES;
